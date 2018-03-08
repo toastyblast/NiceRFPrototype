@@ -1,0 +1,22 @@
+{
+  "name": "activity-monitor",
+  "version": "1.0.0",
+  "description": "CPU activity monitor",
+  "repository": "electron/simple-samples",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js",
+    "install": "electron-rebuild"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.4.12",
+    "electron-rebuild": "^1.7.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9",
+    "serialport": "^6.1.1"
+  }
+}
