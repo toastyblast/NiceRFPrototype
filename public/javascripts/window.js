@@ -1,18 +1,21 @@
 const SerialPort = require('serialport');
 
-const ReadLine = SerialPort.parsers.Readline;
-//FIXME: Change the number after the "COM" part to the one the antenna has been assigned on your computer. This can be found in the device manager of your computer, if you are an admin of the computer.
+const Readline = SerialPort.parsers.Readline;
 const serialPort = new SerialPort('COM5', {autoOpen: true}, function (err) {
     if (err) {
         return console.log('Error opening port: ', err.message);
+    } else {
+        return console.log("DEBUG - PORT OPENED");
     }
 });
-const readLineParser = serialPort.pipe(new ReadLine({delimiter: '\n'}));
+const readLineParser = serialPort.pipe(new Readline({delimiter: '\n'}));
 
 readLineParser.on('data', function (data) {
     if (data === "") {
         //Do nothing...
     } else {
+        console.log("DEBUG - MESSAGE RECEIVED", data);
+
         var textArea = document.getElementById("messageDisplay");
         textArea.value += "RECEIVED: " + data + "\n";
 
