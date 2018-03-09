@@ -10,8 +10,12 @@
 
 <body>
 <div class="container-fluid">
+    <div>
+        <textarea title="Message display" id="messageDisplay" rows="10" cols="80" readonly></textarea>
+    </div>
+    <br>
     <form id="messageForm" name="sendMessageForm">
-        Message: <input id="textBox" type="text" name="userMessage" placeholder="Message...">
+        <input class="textInput" id="textBox" type="text" name="userMessage" placeholder="Enter a message...">
         <input id="sendButton" type="submit" value="Send">
     </form>
 </div>
