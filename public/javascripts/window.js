@@ -9,6 +9,9 @@ const serialPort = new SerialPort('COM5', {autoOpen: true}, function (err) {
         return console.log("DEBUG - PORT OPENED");
     }
 });
+//TODO - TEACHER: If you use the serialport debugging assistant from the NiceRF company, always have an enter after
+// TODO: your message, before sending it. The JS serialport requires there to be a delimiter, and only messages ending
+// TODO: with such a delimiter will be shown when received, otherwise they will be buffered until the delimiter is received.
 const readLineParser = serialPort.pipe(new Readline({delimiter: '\n'}));
 
 readLineParser.on('data', function (data) {
