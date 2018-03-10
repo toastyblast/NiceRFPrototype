@@ -1,6 +1,7 @@
 const SerialPort = require('serialport');
 
 const Readline = SerialPort.parsers.Readline;
+//FIXME: Change the number after "COM" to the port given by your device. This can be found in the device manager, if you are an admin of the computer!
 const serialPort = new SerialPort('COM5', {autoOpen: true}, function (err) {
     if (err) {
         return console.log('Error opening port: ', err.message);
@@ -34,7 +35,7 @@ $(document).ready(function () {
     $("#messageForm").submit(function (event) {
         event.preventDefault();
 
-        var userMessage = document.forms["sendMessageForm"]["userMessage"].value;
+        var userMessage = document.forms["sendMessageForm"]["userMessage"].value + '\n';
 
         if (userMessage === "") {
             alert("You didn't give any input!");
@@ -48,13 +49,13 @@ $(document).ready(function () {
             var textArea = document.getElementById("messageDisplay");
 
             if (err) {
-                textArea.value += "NOT SENT: Error sending your message - " + userMessage + "\n";
+                textArea.value += "NOT SENT: Error sending your message - " + userMessage;
                 textArea.scrollTop = textArea.scrollHeight;
                 return console.log('Error on write: ', err.message);
             }
 
             console.log('message written: ' + userMessage);
-            textArea.value += "SENT: " + userMessage + "\n";
+            textArea.value += "SENT: " + userMessage;
             textArea.scrollTop = textArea.scrollHeight;
             $('#textBox').val('');
         });
